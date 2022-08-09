@@ -17,6 +17,7 @@ class SinglePassCluster():
             self.stopwords += my_stopwords
         self.tfidf = TfidfVectorizer(stop_words=self.stopwords, max_df=max_df, max_features=max_features)
         self.simi_thr = simi_threshold
+        # 聚类中心:新入的文本在cluster_center_vec没有找到满足阈值的中心，就顺序加入到cluster_center_vec中，作为新的一类的原始稿，并且cluster_center_vec对应的下表作为类别
         self.cluster_center_vec = [] # [cluster_center_vec, ]
         self.idx_2_text = {}  # {文本id: text, }
         self.cluster_2_idx = {}  # {cluster_id: [text_id, ]}
